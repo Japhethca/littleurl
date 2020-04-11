@@ -3,7 +3,10 @@ function submitForm(event) {
     const form = new FormData(event.target)
     fetch("/", { method: 'POST', body: form })
         .then(res => res.text())
-        .then(url => showGeneratedLink(url))
+        .then(url => {
+            showGeneratedLink(url);
+            event.target.reset();
+        })
         .catch(err => console.log(err));
 }
 
