@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css" type="text/css">
+    <title>Little URL</title>
+</head>
+<body>
+    <header>
+        <h1 class="lu-header-text">Little Url</h1>
+        <p class="lu-header-intro">Another free simple url shortner</p>
+        <hr class="hr-line">
+    </header>
+    <main>
+        <form onsubmit="submitForm(event)" class="lu-form">
+            <div class="lu-input-group">
+                <input type="url" required name="url"  placeholder="Enter URL" autocomplete="none">
+                <input type="name" name="custom-path"  placeholder="Enter custom url (optional)">
+            </div>
+            <div class="lu-link-wrapper"><a href="#" target="_blank" class="lu-gen-link">URL: </a></div>
+            <button class="lu-btn">Shorten</button>
+        </form>
+    </main>
+    <script src="static/js/main.js"></script>
+</body>
+</html>

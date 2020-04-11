@@ -1,0 +1,149 @@
+/* Css reset styles */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* End css reset */
+body {
+	background-color: #3b3c38;
+}
+
+main {
+	width: 80%;
+	margin: auto;
+}
+
+.lu-header-text {
+    text-align: center;
+	font-size: 6em;
+	color: #4FF0FF;
+	margin-top: 5rem;
+	margin-bottom: 1rem;
+}
+
+.lu-header-intro {
+	color: rgb(98, 169, 175);
+	font-size: 1.5em;
+	font-style: italic;
+	text-align: center;
+}
+
+.hr-line {
+	width: 70%;
+	margin: 1.5rem auto;
+	border: .3px solid rgb(112, 112, 112);
+}
+
+.lu-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.lu-input-group {
+	display: flex;
+	margin-top: 5rem;
+}
+
+.lu-input-group input {
+	flex: 1;
+	margin: 1rem;
+	padding: 15px;
+	font-size: 18pt;
+	color: rgb(112, 112, 112);
+	background-color: #3b3c38;
+	border: 2px solid rgb(112, 112, 112);
+	border-radius: 5px;
+	outline: 0;
+}
+
+.lu-input-group input:focus {
+	background-color: #313131;
+	border-color: #4FF0FF;
+	color: #fff;
+}
+
+.lu-btn {
+	width: 20%;
+	align-self: center;
+	padding: 1rem;
+	margin: 2rem auto;
+	border-radius: 5px;
+	font-size: 18pt;
+}
+
+.lu-link-wrapper {
+	background-color: #313131;
+	width: auto;
+	margin: 1rem auto;
+	padding: 1rem;
+	visibility: hidden;
+}
+
+.lu-gen-link {
+	font-size: 20pt;
+	color: #fff;
+}
+
+@media only screen and (max-width: 480px) {
+	/* Mobile devices */
+	.lu-header-text {
+		font-size: 4em;
+	}
+	main {
+		width: 100%;
+	}
+	.lu-input-group {
+		flex-direction: column;
+		margin-top: 3em;
+	}
+	.lu-input-group input {
+		font-size: 1rem;
+	}
+	.lu-btn {
+		width: 90%;
+	}
+	.lu-link-wrapper {
+		padding: auto;
+		margin: auto;
+	}
+}

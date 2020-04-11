@@ -1,2 +1,3 @@
 #Littleurl 
-A simple url shortner written in go.
+
+A simple free url shortener written in go.
