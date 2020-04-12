@@ -12,6 +12,7 @@ type DBActions interface {
 	saveURL(url string, path string, options urlOptions) (URLDetail, error)
 	getURLByPath(path string) (URLDetail, error)
 	getPathByURL(url string) (URLDetail, error)
+	updateUrlPath(url, path string, options urlOptions) (URLDetail, error)
 }
 
 type handler struct {
@@ -33,11 +34,12 @@ func (h *handler) home(w http.ResponseWriter, r *http.Request) {
 
 		var ud URLDetail
 		url := r.FormValue("url")
+		customPath := r.FormValue("custom-path")
 		ud, _ = h.db.getPathByURL(url)
 		if ud.URL == "" {
 			var err error
 			urlopt := urlOptions{isCustom: true}
-			pathStr := r.FormValue("custom-path")
+			pathStr := customPath
 
 			if pathStr == "" {
 				pathStr = shortener.shortString()
@@ -52,6 +54,14 @@ func (h *handler) home(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		}
+
+		if ud.IsCustom == false && customPath != "" {
+			var err error
+			ud, err = h.db.updateUrlPath(url, customPath, urlOptions{isCustom: true})
+			if err != nil {
+				log.Fatal(err) // TODO: handle server errors
+			}
+		}
 		respond(w, []byte(hostURL+ud.Path), http.StatusOK)
 		return
 	}
@@ -63,7 +73,7 @@ func (h *handler) redirect(w http.ResponseWriter, r *http.Request) {
 	path := strings.TrimPrefix(r.URL.Path, "/")
 	ud, err := h.db.getURLByPath(path)
 	if err != nil {
-		http.NotFound(w, r)
+		http.NotFound(w, r) // TODO: create template for 404 eror page
 		return
 	}
 	http.Redirect(w, r, ud.URL, 301)
