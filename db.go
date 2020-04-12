@@ -22,6 +22,16 @@ func (dbm *dbManager) saveURL(url string, path string, options urlOptions) (URLD
 	return ud, nil
 }
 
+func (dbm *dbManager) updateUrlPath(url, path string, options urlOptions) (URLDetail, error) {
+	var ud URLDetail
+	qs := `UPDATE urldetail SET path = $1, is_custom = $2 WHERE url = $3`
+	_, err := dbm.db.Exec(qs, path, options.isCustom, url)
+	if err != nil {
+		return ud, err
+	}
+	return URLDetail{URL: url, Path: path, IsCustom: options.isCustom}, nil
+}
+
 func (dbm *dbManager) getURLByPath(path string) (URLDetail, error) {
 	return dbm.get("path", path)
 }
